@@ -182,11 +182,14 @@ def acf_mma(t, y, version=2014, min_lph = 0.1,
 
     """Plot"""
     if plot:
+        plt.ylabel('ACF')
+        plt.xlabel('Lag [d]')
         plt.plot(lags, acf, alpha=0.5, color='k', linestyle='-.')
         plt.plot(lags, acf_smoothed, color='k')
         if not np.isnan(P_rot):
-            plt.axvline(P_rot, color='red', zorder=1000)
+            plt.axvline(P_rot, color='red', zorder=1000, label=f'$P_\mathrm{{rot}}={round(P_rot,2):.2f}\pm{round(P_rot_err,2):.2f}\;\mathrm{{d}}$')
             plt.axvspan(P_rot - P_rot_err, P_rot + P_rot_err, color='red', alpha=0.3, zorder=1000)
+            plt.legend(frameon=True)
             # plt.axvline(27, linestyle='-.') # Sun's rotational period
 
     return (P_rot, P_rot_err), flag
