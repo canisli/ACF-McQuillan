@@ -110,8 +110,8 @@ def _identify_rotational_period(lags, acf_smoothed, min_lph=0.1, version=2014,
     if ax is not None:
         """Plot dominant period"""
         if verbose:
-            ax.axvline(peak_periods[0], color='r', linestyle='--')
-            ax.axvline(peak_periods[1], color='r', linestyle='--')
+            ax.axvline(peak_periods[0], color='black', linestyle='--')
+            ax.axvline(peak_periods[1], color='black', linestyle='--')
         
         """Show intervals for harmonics of the dominant period to be found"""
         if verbose:
@@ -186,7 +186,7 @@ def acf_mma(t, y, version=2014, min_lph = 0.1,
         plt.plot(lags, acf_smoothed, color='k')
         if not np.isnan(P_rot):
             plt.axvline(P_rot, color='red', zorder=1000)
-            plt.axvspan(P_rot - P_rot_err, P_rot + P_rot_err, color='red', alpha=0.5, zorder=1000)
+            plt.axvspan(P_rot - P_rot_err, P_rot + P_rot_err, color='red', alpha=0.3, zorder=1000)
             # plt.axvline(27, linestyle='-.') # Sun's rotational period
 
     return (P_rot, P_rot_err), flag
